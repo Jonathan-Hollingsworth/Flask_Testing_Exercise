@@ -1,0 +1,16 @@
+td{
+    border-style: dashed;
+    border-color: black;
+    background-color: azure;
+    font-size: 5em;
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+section, form, h1, h2{
+    display: flex;
+    justify-content: center;
+}
