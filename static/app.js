@@ -13,9 +13,6 @@ class Game{
         this.timer = setInterval(this.countDown.bind(this), 1000)
     }
     async handleGuess(guess){
-        if(this.gameOver){
-            return alert('The game is over and your guess was denied')
-        }
         if(guess !== ''){
             const response = await axios.get('/guess', {params: {guess}})
             const result = response.data.result
@@ -44,8 +41,14 @@ class Game{
     }
     async handleGameOver(){
         this.gameOver = true
+        $form.hide()
         const resp = await axios.post('/game-over', { score: this.totalScore })
-        alert(`Game over. this is your final score: ${this.totalScore}`)
+        if(resp.data.newRecord){
+            alert(`You've broken the current record. The record is now ${this.totalScore}`)
+        }
+        else{
+            alert(`Game over. This is your final score: ${this.totalScore}`)
+        }
     }
     async countDown(){
         this.time --
@@ -63,8 +66,7 @@ alert('You will have 60 seconds to find as many words as you can. Longer words a
 
 $form.on('submit', async function(evt){
     evt.preventDefault()
-    guess = $guess.val()
-    response = await axios.get('/guess', {params: {guess}})
+    const guess = $guess.val()
     await boggle.handleGuess(guess)
     $guess.val('')
 })

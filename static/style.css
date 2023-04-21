@@ -10,7 +10,11 @@ table{
     border-collapse: collapse;
 }
 
-section, form, h1, h2{
+section, form, h1, h2, p, b{
     display: flex;
     justify-content: center;
+}
+
+body{
+    background-color: antiquewhite;
 }

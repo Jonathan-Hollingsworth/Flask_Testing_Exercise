@@ -5,6 +5,7 @@
 {% block content %}
     <h1 id="timer">Time Remaining: 60 Seconds</h1>
     <h2 id="high-score">High score: {{ high_score }}</h2>
+    <p>You have played {{ play_count }} times</p>
     <h2 id="score">Score: 0</h2>
     <section>
         <table>
@@ -25,9 +26,7 @@
         <input type="text" placeholder="Guess a word" id="guess" name="guess">
         <button type="submit">Find word</button>
     </form>
-    <section>
-      <b>Found Words:</b>
-    </section>
+    <b>Found Words:</b>
     <section>
       <ul></ul>
     </section>
